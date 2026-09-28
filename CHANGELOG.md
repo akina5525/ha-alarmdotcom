@@ -1,3 +1,9 @@
+## 2026.9.28.1 (fork)
+
+### Fixed
+
+- Accept Alarm.com email MFA type `8` in permission metadata and enabled-method bitmasks. Preserve type `8` when submitting the email OTP while continuing to use Alarm.com's email-code delivery action.
+
 ## 2026.7.9.3 (stable)
 
 This release consolidates everything from the `2026.7.6.1b0` through `2026.7.9.3b0` beta cycle into a single stable release. Every item below has been verified either through the automated test suite, a clean `mypy`/`ruff`/CI run, or a real diagnostics download / log capture from a live account - the full beta-by-beta detail (including what didn't work on the first attempt) is preserved further down in this file for anyone who wants it.

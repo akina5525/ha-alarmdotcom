@@ -21,6 +21,7 @@ class OtpType(Enum):
     app = 1
     sms = 2
     email = 4
+    email_8 = 8
 
 
 @dataclass

@@ -67,7 +67,8 @@
             "options": {
                 "app": "Authenticator App",
                 "sms": "Text Message",
-                "email": "Email"
+                "email": "Email",
+                "email_8": "Email"
             }
         }
     }

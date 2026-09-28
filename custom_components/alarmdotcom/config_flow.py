@@ -172,7 +172,11 @@ class ADCFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 errors["base"] = "invalid_otp_method"
             else:
                 try:
-                    if self.otp_method in (pyadc.OtpType.email, pyadc.OtpType.sms):
+                    if self.otp_method in (
+                        pyadc.OtpType.email,
+                        pyadc.OtpType.email_8,
+                        pyadc.OtpType.sms,
+                    ):
                         LOGGER.debug(
                             "Requesting OTP via %s...", self.otp_method.name
                         )

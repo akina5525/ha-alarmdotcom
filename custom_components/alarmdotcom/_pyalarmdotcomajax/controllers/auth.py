@@ -331,6 +331,14 @@ class AuthenticationController:
         enabled_2fa_methods = [
             otp_type
             for otp_type in OtpType
+            # Alarm.com now also reports email as bit 8 for some accounts.
+            # Prefer that value when present so OTP verification submits the
+            # same type identifier Alarm.com advertised.
+            if enabled_otp_types_bitmask
+            and not (
+                otp_type == OtpType.email
+                and enabled_otp_types_bitmask & OtpType.email_8.value
+            )
             if enabled_otp_types_bitmask and bool((enabled_otp_types_bitmask) & otp_type.value)
         ]
 
@@ -366,7 +374,7 @@ class AuthenticationController:
     async def request_otp(self, method: OtpType | None) -> None:
         """Request e-mail or SMS OTP."""
 
-        if method not in [OtpType.sms, OtpType.email]:
+        if method not in [OtpType.sms, OtpType.email, OtpType.email_8]:
             return
 
         await self._bridge.post(
